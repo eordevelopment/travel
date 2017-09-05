@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Travel Helper</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="1085670597526-0ue58nu7jk445cuiuadeork1lkfphqva.apps.googleusercontent.com">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+  <script type="application/javascript">
+    function gapiLoad() {
+      tryAttachedListener();
+    }
+
+    function tryAttachedListener() {
+      if (!isGapiDefined() || !isAuth2Defined()) {
+        setTimeout(tryAttachedListener, 100);
+      } else {
+        const auth2 = gapi.auth2.getAuthInstance();
+        const isSignedIn = auth2.isSignedIn.get();
+        if (!isSignedIn) {
+          const event = new CustomEvent('signInState', { detail: false });
+          window.dispatchEvent(event);
+        }
+        auth2.isSignedIn.listen(function (val) {
+          const event = new CustomEvent('signInState', { detail: val });
+          window.dispatchEvent(event);
+        });
+      }
+    }
+
+    function isGapiDefined() {
+      try {
+        if (gapi) {
+          return true;
+        }
+        return false;
+      } catch (ex) {
+        return false;
+      }
+    }
+
+    function isAuth2Defined() {
+      try {
+        if (gapi.auth2) {
+          return true;
+        }
+        return false;
+      } catch (ex) {
+        return false;
+      }
+    }
+  </script>
+<link href="styles.c445734d57aca4d8a878.bundle.css" rel="stylesheet"/></head>
+
+<body>
+  <app-shell></app-shell>
+  <dialog-outlet></dialog-outlet>
+  <script src="https://apis.google.com/js/platform.js" async defer onload="this.onload=function(){};gapiLoad()"></script>
+<script type="text/javascript" src="inline.a8c41be39b5465c1e96a.bundle.js"></script><script type="text/javascript" src="polyfills.5b0d75782f24b3b91d2b.bundle.js"></script><script type="text/javascript" src="scripts.c6911f457de55d7bba39.bundle.js"></script><script type="text/javascript" src="vendor.f89c8f104eb34ecf0029.bundle.js"></script><script type="text/javascript" src="main.fe4b41fbf96b6e34957d.bundle.js"></script></body>
+
+</html>
