@@ -12,48 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
   <script type="application/javascript">
-    function gapiLoad() {
-      tryAttachedListener();
-    }
-
-    function tryAttachedListener() {
-      if (!isGapiDefined() || !isAuth2Defined()) {
-        setTimeout(tryAttachedListener, 100);
-      } else {
-        const auth2 = gapi.auth2.getAuthInstance();
-        const isSignedIn = auth2.isSignedIn.get();
-        if (!isSignedIn) {
-          const event = new CustomEvent('signInState', { detail: false });
-          window.dispatchEvent(event);
-        }
-        auth2.isSignedIn.listen(function (val) {
-          const event = new CustomEvent('signInState', { detail: val });
-          window.dispatchEvent(event);
-        });
-      }
-    }
-
-    function isGapiDefined() {
-      try {
-        if (gapi) {
-          return true;
-        }
-        return false;
-      } catch (ex) {
-        return false;
-      }
-    }
-
-    function isAuth2Defined() {
-      try {
-        if (gapi.auth2) {
-          return true;
-        }
-        return false;
-      } catch (ex) {
-        return false;
-      }
-    }
+    function gapiLoad(){tryAttachedListener()}function tryAttachedListener(){if(isGapiDefined()&&isAuth2Defined()){var t=gapi.auth2.getAuthInstance();if(!t.isSignedIn.get()){var e=new CustomEvent("signInState",{detail:!1});window.dispatchEvent(e)}t.isSignedIn.listen(function(t){var e=new CustomEvent("signInState",{detail:t});window.dispatchEvent(e)})}else setTimeout(tryAttachedListener,100)}function isGapiDefined(){try{return!!gapi}catch(t){return!1}}function isAuth2Defined(){try{return!!gapi.auth2}catch(t){return!1}}
   </script>
 <link href="styles.c445734d57aca4d8a878.bundle.css" rel="stylesheet"/></head>
 
