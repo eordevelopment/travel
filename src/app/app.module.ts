@@ -7,20 +7,24 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app.routing';
 import { AuthGuard } from './services/auth-guard';
-import { AppShellComponent } from 'app/app-shell/app-shell.component';
+import { AppShellComponent } from 'app/components/app-shell/app-shell.component';
+import { HomeComponent } from 'app/components/home/home.component';
+import { TravelCardComponent } from 'app/components/travel-card/travel-card.component';
+import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashboard.component';
 
 // Services
 import { StorageService } from './services/storage.service';
 import { FormHelperService } from './services/form-helper.service'
 import { TripService } from 'app/services/trip.service';
 
-// Feature modules
-import { WelcomeModule } from 'app/modules/welcome/welcome.module';
-import { TripsModule } from 'app/modules/trips/trips.module';
+
 
 @NgModule({
   declarations: [
-    AppShellComponent
+    AppShellComponent,
+    HomeComponent,
+    TravelCardComponent,
+    TripDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +34,6 @@ import { TripsModule } from 'app/modules/trips/trips.module';
     HttpModule,
     JsonpModule,
     MdlModule,
-
-    WelcomeModule,
-    TripsModule
   ],
   providers: [
     AuthGuard,

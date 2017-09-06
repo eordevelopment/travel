@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { TravelCard } from 'app/modules/welcome/models/TravelCard';
 import { ITrip } from 'app/contracts/ITrip';
 import { BaseComponent } from 'app/classes/BaseComponent';
+import { TravelCard } from 'app/models/TravelCard';
 
 @Component({
   selector: 'app-travel-card',

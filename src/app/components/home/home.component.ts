@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { } from '@types/googlemaps';
 
-import { TravelCard } from 'app/modules/welcome/models/TravelCard';
 import { StorageService } from 'app/services/storage.service';
 import { IUserSession } from 'app/contracts/IUserSession';
 import { ITrip } from 'app/contracts/ITrip';
