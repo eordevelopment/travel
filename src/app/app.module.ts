@@ -11,10 +11,11 @@ import { AppShellComponent } from 'app/app-shell/app-shell.component';
 
 // Services
 import { StorageService } from './services/storage.service';
+import { FormHelperService } from './services/form-helper.service'
+import { TripService } from 'app/services/trip.service';
 
 // Feature modules
 import { WelcomeModule } from 'app/modules/welcome/welcome.module';
-import { TripService } from 'app/services/trip.service';
 import { TripsModule } from 'app/modules/trips/trips.module';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { TripsModule } from 'app/modules/trips/trips.module';
   providers: [
     AuthGuard,
     StorageService,
+    FormHelperService,
     TripService],
   bootstrap: [AppShellComponent]
 })
