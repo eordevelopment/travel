@@ -42,5 +42,4 @@ export class HomeComponent implements OnInit {
   public login(): void {
     (gapi as any).auth2.getAuthInstance().signIn();
   }
-
 }

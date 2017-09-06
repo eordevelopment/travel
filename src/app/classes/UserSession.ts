@@ -8,6 +8,7 @@ export class UserSession implements IUserSession {
   public email: string;
   public imageUrl: string;
   public userToken: string;
+  public googleToken: string;
 
   constructor(source?: any) {
     if (source) {

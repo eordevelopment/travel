@@ -6,4 +6,5 @@ export interface IUserSession {
   email: string;
   imageUrl: string;
   userToken: string;
+  googleToken: string;
 }

@@ -1,6 +1,6 @@
 <!-- <div id="gmap"></div> -->
 
-<div *ngIf="loggedInUser && loggedInUser != null;then tripDashboard else loginInfo"></div>
+<div *ngIf="loggedInUser && loggedInUser != null && loggedInUser.userToken != null;then tripDashboard else loginForm"></div>
 
 <ng-template #tripDashboard>
   <div *ngIf="trips && trips != null;then tripsList else loading"></div>
@@ -29,7 +29,7 @@
   </div>
 </ng-template>
 
-<ng-template #loginInfo>
+<ng-template #loginForm>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--4-offset-desktop mdl-cell--4-col-desktop mdl-cell--12-col-phone text-center">
       <div class="login-card mdl-card  mdl-shadow--8dp">
@@ -37,14 +37,31 @@
           <h2 class="mdl-card__title-text mdl-color-text--teal">Login</h2>
         </div>
         <div class="mdl-card__supporting-text">
-          Please login using your Google account.
+          <div *ngIf="loggedInUser && loggedInUser != null; then loggingIn else loginInfo"></div>
         </div>
-        <div class="mdl-card__actions mdl-card--border">
+        <div class="mdl-card__actions mdl-card--border" *ngIf="!loggedInUser || loggedInUser == null">
           <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="login()">
             <i class="fa fa-3x fa-google"></i> <span>Sign in with Google</span>
           </a>
         </div>
       </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #loginInfo>
+  Please login using your Google account.
+</ng-template>
+
+<ng-template #loggingIn>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col text-center">
+      <mdl-spinner active></mdl-spinner>
+    </div>
+  </div>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col text-center">
+      <span>Loading User profile...</span>
     </div>
   </div>
 </ng-template>
