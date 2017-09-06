@@ -13,17 +13,31 @@ import { IUserSession } from 'app/contracts/IUserSession';
 import { UserSession } from 'app/classes/UserSession';
 import { ServiceError } from 'app/classes/ServiceError';
 import { LoginDto } from 'app/classes/LoginDto';
+import { ITrip } from 'app/contracts/ITrip';
 
 @Injectable()
 export class StorageService {
   private sessionKey = 'th_suser';
+  private tripKey = 'th_ctrip';
+
   public loggedInUser: BehaviorSubject<IUserSession>;
+  public currentTrip: BehaviorSubject<ITrip>;
 
   constructor(private http: Http) {
     this.loggedInUser = new BehaviorSubject<IUserSession>(this.getUser());
+    this.currentTrip = new BehaviorSubject<ITrip>(this.getTrip());
+
     window.addEventListener('signInState', (evt) => {
       this.storageEventHandler(evt);
     }, false);
+  }
+
+  public hasAccessToken(): boolean {
+    const token = this.getToken() as string;
+    if (token && token !== null) {
+      return true;
+    }
+    return false;
   }
 
   public getToken(): string {
@@ -34,7 +48,35 @@ export class StorageService {
     return user.userToken;
   }
 
-  public getUser(): IUserSession {
+  public clear(): void {
+    window.localStorage.clear();
+    this.loggedInUser.next(null);
+  }
+
+  public setTrip(trip?: ITrip): void {
+    if (trip && trip != null) {
+      window.localStorage.setItem(this.tripKey, JSON.stringify(trip));
+      this.currentTrip.next(trip);
+    } else {
+      window.localStorage.removeItem(this.tripKey);
+      this.currentTrip.next(null);
+    }
+
+  }
+
+  public getTrip(): ITrip {
+    let tripJson = window.localStorage.getItem(this.tripKey);
+
+    if (!tripJson || tripJson == null) {
+      tripJson = null;
+      window.localStorage.removeItem(this.tripKey);
+      return null;
+    }
+
+    return JSON.parse(tripJson);
+  }
+
+  private getUser(): IUserSession {
     let userJson = window.localStorage.getItem(this.sessionKey);
 
     if (!userJson || userJson == null) {
@@ -46,12 +88,6 @@ export class StorageService {
     return JSON.parse(userJson);
   }
 
-  public clear(): void {
-    console.log('clearing user');
-    window.localStorage.clear();
-    this.loggedInUser.next(null);
-  }
-
   private setUser(user: IUserSession): void {
     if (user && user != null) {
       const currentUser = this.getUser();
@@ -59,7 +95,6 @@ export class StorageService {
         user.userToken = currentUser.userToken;
       }
 
-      console.log(user);
       window.localStorage.setItem(this.sessionKey, JSON.stringify(user));
       this.loggedInUser.next(user);
 

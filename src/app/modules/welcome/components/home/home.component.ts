@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(private storage: StorageService, private tripService: TripService) { }
 
   ngOnInit() {
+    this.storage.setTrip();
     this.storage.loggedInUser.subscribe(value => {
       this.loggedInUser = value;
       if (value != null && value.userToken != null) {

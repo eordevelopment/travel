@@ -5,8 +5,8 @@
   <div class="mdl-card__supporting-text">
     {{travelCard.fromMt.format('MMM Do YYYY')}} - {{travelCard.toMt.format('MMM Do YYYY')}}
   </div>
-  <div class="mdl-card__actions mdl-card--border text-right">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+  <div class="mdl-card__actions mdl-card--border text-center">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="viewTrip()">
       View
     </a>
   </div>

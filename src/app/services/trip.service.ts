@@ -29,6 +29,19 @@ export class TripService {
       .catch(this.handleError);
   }
 
+  public getTrip(id: string): Observable<ITrip> {
+    if (!id) {
+      return Observable.of<ITrip>(null)
+    } else {
+      const headers = new Headers({ 'Authorization': `Basic ${this.storage.getToken()}` });
+      const options = new RequestOptions({ headers: headers });
+
+      return this.http.get(this.endpoint + '/' + id, options)
+        .map(response => response.json() as ITrip)
+        .catch(this.handleError);
+    }
+  }
+
   private handleError(res: Response | any) {
     const error = new ServiceError();
     error.status = res.status;

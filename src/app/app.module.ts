@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app.routing';
+import { AuthGuard } from './services/auth-guard';
 import { AppShellComponent } from 'app/app-shell/app-shell.component';
 
 // Services
@@ -14,11 +15,12 @@ import { StorageService } from './services/storage.service';
 // Feature modules
 import { WelcomeModule } from 'app/modules/welcome/welcome.module';
 import { TripService } from 'app/services/trip.service';
+import { TripsModule } from 'app/modules/trips/trips.module';
 
 @NgModule({
   declarations: [
     AppShellComponent
-],
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -28,9 +30,13 @@ import { TripService } from 'app/services/trip.service';
     JsonpModule,
     MdlModule,
 
-    WelcomeModule
+    WelcomeModule,
+    TripsModule
   ],
-  providers: [StorageService, TripService],
+  providers: [
+    AuthGuard,
+    StorageService,
+    TripService],
   bootstrap: [AppShellComponent]
 })
 export class AppModule { }

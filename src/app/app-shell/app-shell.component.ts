@@ -5,6 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 import { StorageService } from 'app/services/storage.service';
 import { IUserSession } from 'app/contracts/IUserSession';
+import { ITrip } from 'app/contracts/ITrip';
 
 @Component({
   selector: 'app-shell',
@@ -15,6 +16,8 @@ export class AppShellComponent implements AfterViewInit {
   @ViewChild('mdlTravelLayout') layout: ElementRef;
 
   public loggedInUser: IUserSession;
+  public currentTrip: ITrip;
+
   private lastPoppedUrl: string;
 
   constructor(private storage: StorageService, private router: Router, private location: Location) { }
@@ -26,8 +29,20 @@ export class AppShellComponent implements AfterViewInit {
       });
     });
 
+    this.storage.currentTrip.subscribe(value => {
+      setTimeout(() => {
+        this.currentTrip = value;
+        console.log(this.currentTrip);
+      });
+    });
+
     this.location.subscribe((ev: PopStateEvent) => {
       this.lastPoppedUrl = ev.url;
+      // console.log(this.lastPoppedUrl);
+      // if (this.lastPoppedUrl === '/home') {
+      //   console.log("Clearing trip");
+      //   this.storage.setTrip();
+      // }
     });
 
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe((evt: NavigationEnd) => {
