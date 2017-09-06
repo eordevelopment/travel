@@ -38,11 +38,6 @@ export class AppShellComponent implements AfterViewInit {
 
     this.location.subscribe((ev: PopStateEvent) => {
       this.lastPoppedUrl = ev.url;
-      // console.log(this.lastPoppedUrl);
-      // if (this.lastPoppedUrl === '/home') {
-      //   console.log("Clearing trip");
-      //   this.storage.setTrip();
-      // }
     });
 
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe((evt: NavigationEnd) => {
@@ -55,10 +50,28 @@ export class AppShellComponent implements AfterViewInit {
     });
   }
 
+  public hasUser(): boolean {
+    if (this.loggedInUser && this.loggedInUser != null) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public hasTrip(): boolean {
+    if (this.currentTrip && this.currentTrip != null) {
+      return true;
+    }
+
+    return false;
+  }
+
   public logout(): void {
     const auth2 = (gapi as any).auth2.getAuthInstance();
     auth2.signOut().then(() => this.storage.clear);
     (this.layout as any).closeDrawer();
+
+    this.router.navigate(['/home']);
   }
 
 }

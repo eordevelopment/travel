@@ -17,7 +17,7 @@
 <ng-template #largeMenu>
     <a routerLink="/" class="navbar-title">Trip Planner</a>
     <mdl-layout-spacer></mdl-layout-spacer>
-    <div *ngIf="currentTrip && currentTrip != null" class="mdl-layout--large-screen-only">
+    <div *ngIf="hasTrip() && hasUser()" class="mdl-layout--large-screen-only">
         <nav class="mdl-navigation">
             <span>{{currentTrip.name}}</span>
             <a class="mdl-navigation__link">Trips</a>
@@ -26,7 +26,7 @@
         </nav>
     </div>
 
-    <div *ngIf="loggedInUser" class="profile mdl-layout--large-screen-only">
+    <div *ngIf="hasUser()" class="profile mdl-layout--large-screen-only">
         <button mdl-button #btn1="mdlButton" (click)="m1.toggle($event, btn1)" mdl-button-type="icon" mdl-ripple>
             <img src="{{loggedInUser.imageUrl}}"/>
           </button>
@@ -37,15 +37,15 @@
 </ng-template>
 
 <ng-template #sideMenu>
-    <div *ngIf="loggedInUser" class="side-profile">
+    <div *ngIf="hasUser()" class="side-profile">
         <img src="{{loggedInUser.imageUrl}}" />
         <div>{{loggedInUser.fullName}}</div>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" (click)="logout()"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
         </nav>
     </div>
-    <hr *ngIf="loggedInUser">
-    <div *ngIf="currentTrip && currentTrip != null">
+    <hr *ngIf="hasUser()">
+    <div *ngIf="hasTrip() && hasUser()">
         <h4>{{currentTrip.name}}</h4>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link">Trips</a>
