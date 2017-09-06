@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import {} from '@types/googlemaps';
+import { } from '@types/googlemaps';
 
 import { TravelCard } from 'app/modules/welcome/models/TravelCard';
 import { StorageService } from 'app/services/storage.service';
@@ -23,15 +23,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.storage.loggedInUser.subscribe(value => {
       this.loggedInUser = value;
-      if (value != null) {
-        this.tripService.getTrips().subscribe(values => {
-          this.trips = values;
-        });
+      if (value != null && value.userToken != null) {
+        this.fetchTrips();
 
-      //   const googleMap = new google.maps.Map(document.getElementById('gmap'), {
-      //     center: { lat: 53.4925979, lng: -7.9133371 },
-      //     zoom: 6
-      // });
+        //   const googleMap = new google.maps.Map(document.getElementById('gmap'), {
+        //     center: { lat: 53.4925979, lng: -7.9133371 },
+        //     zoom: 6
+        // });
 
       } else {
         this.trips = null;
@@ -41,5 +39,13 @@ export class HomeComponent implements OnInit {
 
   public login(): void {
     (gapi as any).auth2.getAuthInstance().signIn();
+  }
+
+  private fetchTrips(): void {
+    if (!this.trips) {
+      this.tripService.getTrips().subscribe(values => {
+        this.trips = values;
+      });
+    }
   }
 }

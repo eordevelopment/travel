@@ -10,20 +10,21 @@ import { Headers, RequestOptions } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { ITrip } from 'app/contracts/ITrip';
 import { ServiceError } from 'app/classes/ServiceError';
+import { StorageService } from 'app/services/storage.service';
 
 @Injectable()
 export class TripService {
   private endpoint = 'trip';
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private storage: StorageService) {
     this.endpoint = environment.serviceUrl + 'trip';
   }
 
   public getTrips(): Observable<ITrip[]> {
-    // const headers = new Headers({ 'Authorization': `Basic ${this.storageService.getToken()}` });
-    // const options = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Authorization': `Basic ${this.storage.getToken()}` });
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.get(this.endpoint)
+    return this.http.get(this.endpoint, options)
       .map(response => response.json() as ITrip[])
       .catch(this.handleError);
   }

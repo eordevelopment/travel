@@ -26,6 +26,14 @@ export class StorageService {
     }, false);
   }
 
+  public getToken(): string {
+    const user = this.getUser();
+    if (!user || user == null) {
+      return null;
+    }
+    return user.userToken;
+  }
+
   public getUser(): IUserSession {
     let userJson = window.localStorage.getItem(this.sessionKey);
 
@@ -57,13 +65,13 @@ export class StorageService {
 
       if (!user.userToken || user.userToken == null) {
         this.login(new LoginDto(user.googleToken))
-        .subscribe(response => {
-          user.userToken = response;
-          console.log(user);
-          window.localStorage.setItem(this.sessionKey, JSON.stringify(user));
-          this.loggedInUser.next(user);
-        },
-        (error: any) => this.handleError(error));
+          .subscribe(response => {
+            user.userToken = response;
+            console.log(user);
+            window.localStorage.setItem(this.sessionKey, JSON.stringify(user));
+            this.loggedInUser.next(user);
+          },
+          (error: any) => this.handleError(error));
       }
 
     } else {
