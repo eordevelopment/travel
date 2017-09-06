@@ -28,9 +28,7 @@
     </div>
   </div>
 
-  <button (click)="editUserDialog.show()" class="add-btn mdl-shadow--16dp" mdl-button mdl-button-type="fab" mdl-colored="accent" mdl-ripple>
-      <mdl-icon>add</mdl-icon>
-  </button>
+  <app-fab-menu [fabItems]="fabItems" (onItemSelect)="fabItemAction($event)"></app-fab-menu>
 
 </ng-template>
 

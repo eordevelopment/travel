@@ -1,11 +1,12 @@
-
-import { Component, OnInit } from '@angular/core';
 import { } from '@types/googlemaps';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Location, PopStateEvent } from '@angular/common';
 
 import { StorageService } from 'app/services/storage.service';
 import { IUserSession } from 'app/contracts/IUserSession';
 import { ITrip } from 'app/contracts/ITrip';
 import { TripService } from 'app/services/trip.service';
+import { FabItem } from 'app/classes/FabItem';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,18 @@ import { TripService } from 'app/services/trip.service';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('editUserDialog') newTripDialog: ElementRef;
+
   public loggedInUser: IUserSession;
+
+  public fabItems: FabItem[];
   public trips: ITrip[];
   public items: string[];
 
-  constructor(private storage: StorageService, private tripService: TripService) { }
+  constructor(
+    private location: Location,
+    private storage: StorageService,
+    private tripService: TripService) { }
 
   ngOnInit() {
     this.storage.setTrip();
@@ -35,10 +43,21 @@ export class HomeComponent implements OnInit {
         this.trips = null;
       }
     });
+
+    this.location.subscribe((ev: PopStateEvent) => {
+      (this.newTripDialog as any).close();
+    });
+
+    this.fabItems = new Array();
+    this.fabItems.push(new FabItem('New trip', 'flight'));
   }
 
   public login(): void {
     (gapi as any).auth2.getAuthInstance().signIn();
+  }
+
+  public fabItemAction(event: FabItem): void {
+    (this.newTripDialog as any).show();
   }
 
   private fetchTrips(): void {

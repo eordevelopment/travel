@@ -1,0 +1,15 @@
+<ul id="menu" class="mfb-component--br mfb-zoomin" data-mfb-toggle="click" [attr.data-mfb-state]="fabState">
+    <li class="mfb-component__wrap">
+      <a class="mfb-component__button--main mdl-color--red" (click)="toggleFab()">
+          <i class="mfb-component__main-icon--resting material-icons">add</i>
+          <i class="mfb-component__main-icon--active material-icons">clear</i>
+      </a>
+      <ul class="mfb-component__list">
+        <li *ngFor="let fabItem of fabItems">
+          <a (click)="selectItem(fabItem)" [attr.data-mfb-label]="fabItem.description" class="mfb-component__button--child mdl-color--red">
+            <i class="mfb-component__child-icon material-icons">{{fabItem.icon}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>

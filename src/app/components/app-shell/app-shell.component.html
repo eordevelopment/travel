@@ -20,9 +20,7 @@
     <div *ngIf="hasTrip() && hasUser()" class="mdl-layout--large-screen-only">
         <nav class="mdl-navigation">
             <span>{{currentTrip.name}}</span>
-            <a class="mdl-navigation__link"><i class="material-icons">schedule</i> Itinerary</a>
-            <a class="mdl-navigation__link"><i class="material-icons">map</i> Map</a>
-            <a class="mdl-navigation__link"><i class="material-icons">lightbulb_outline</i> Ideas</a>
+            <ng-container *ngTemplateOutlet="menuItems"></ng-container>
         </nav>
     </div>
 
@@ -48,9 +46,14 @@
     <div *ngIf="hasTrip() && hasUser()">
         <h4>{{currentTrip.name}}</h4>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link"><i class="material-icons">schedule</i> Itinerary</a>
-            <a class="mdl-navigation__link"><i class="material-icons">map</i> Map</a>
-            <a class="mdl-navigation__link"><i class="material-icons">lightbulb_outline</i> Ideas</a>
+            <ng-container *ngTemplateOutlet="menuItems"></ng-container>
         </nav>
     </div>
+</ng-template>
+
+<ng-template #menuItems>
+    <a class="mdl-navigation__link"><i class="material-icons">schedule</i> Itinerary</a>
+    <a class="mdl-navigation__link"><i class="material-icons">map</i> Map</a>
+    <a class="mdl-navigation__link"><i class="material-icons">lightbulb_outline</i> Ideas</a>
+    <a class="mdl-navigation__link"><i class="material-icons">euro_symbol</i> Costings</a>
 </ng-template>

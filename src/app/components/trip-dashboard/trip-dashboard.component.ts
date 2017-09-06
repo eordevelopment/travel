@@ -9,6 +9,7 @@ import { BaseComponent } from 'app/classes/BaseComponent';
 import { StorageService } from 'app/services/storage.service';
 import { TripService } from 'app/services/trip.service';
 import { ITrip } from 'app/contracts/ITrip';
+import { FabItem } from 'app/classes/FabItem';
 
 @Component({
   selector: 'app-trip-dashboard',
@@ -16,9 +17,8 @@ import { ITrip } from 'app/contracts/ITrip';
   styleUrls: ['./trip-dashboard.component.less']
 })
 export class TripDashboardComponent extends BaseComponent implements OnInit {
-
   public trip: ITrip;
-  public fabState: string;
+  public fabItems: FabItem[];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,14 +43,13 @@ export class TripDashboardComponent extends BaseComponent implements OnInit {
       },
       (error: any) => this.handleError(error));
 
-    this.fabState = 'closed';
+      this.fabItems = new Array();
+      this.fabItems.push(new FabItem('Add flight', 'flight'));
+      this.fabItems.push(new FabItem('Add hotel', 'hotel'));
+      this.fabItems.push(new FabItem('Add activity', 'directions_walk'));
   }
 
-  public toggleFab(): void {
-    if (this.fabState === 'closed') {
-      this.fabState = 'open';
-    } else {
-      this.fabState = 'closed';
-    }
+  public fabItemAction(event: FabItem): void {
+    console.log(event);
   }
 }
