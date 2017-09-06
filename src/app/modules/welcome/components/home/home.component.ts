@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import {} from '@types/googlemaps';
 
 import { TravelCard } from 'app/modules/welcome/models/TravelCard';
 import { StorageService } from 'app/services/storage.service';
@@ -26,10 +27,20 @@ export class HomeComponent implements OnInit {
         this.tripService.getTrips().subscribe(values => {
           this.trips = values;
         });
+
+      //   const googleMap = new google.maps.Map(document.getElementById('gmap'), {
+      //     center: { lat: 53.4925979, lng: -7.9133371 },
+      //     zoom: 6
+      // });
+
       } else {
         this.trips = null;
       }
     });
+  }
+
+  public login(): void {
+    (gapi as any).auth2.getAuthInstance().signIn();
   }
 
 }
