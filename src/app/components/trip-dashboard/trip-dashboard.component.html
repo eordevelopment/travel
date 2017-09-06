@@ -1,3 +1,29 @@
 <div *ngIf="trip">
   {{trip.name}}
 </div>
+
+<ul id="menu" class="mfb-component--br mfb-zoomin" data-mfb-toggle="click" [attr.data-mfb-state]="fabState">
+  <li class="mfb-component__wrap">
+    <a class="mfb-component__button--main mdl-color--red" (click)="toggleFab()">
+        <i class="mfb-component__main-icon--resting material-icons">add</i>
+        <i class="mfb-component__main-icon--active material-icons">clear</i>
+    </a>
+    <ul class="mfb-component__list">
+      <li>
+        <a data-mfb-label="Add flight" class="mfb-component__button--child mdl-color--red">
+          <i class="mfb-component__child-icon material-icons">flight</i>
+        </a>
+      </li>
+      <li>
+        <a data-mfb-label="Add Hotel" class="mfb-component__button--child mdl-color--red">
+          <i class="mfb-component__child-icon material-icons">hotel</i>
+        </a>
+      </li>
+      <li>
+        <a data-mfb-label="Add Activity" class="mfb-component__button--child mdl-color--red">
+          <i class="mfb-component__child-icon material-icons">directions_walk</i>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>

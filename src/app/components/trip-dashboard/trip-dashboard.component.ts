@@ -18,6 +18,7 @@ import { ITrip } from 'app/contracts/ITrip';
 export class TripDashboardComponent extends BaseComponent implements OnInit {
 
   public trip: ITrip;
+  public fabState: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +42,15 @@ export class TripDashboardComponent extends BaseComponent implements OnInit {
         this.storage.setTrip(this.trip);
       },
       (error: any) => this.handleError(error));
+
+    this.fabState = 'closed';
   }
 
+  public toggleFab(): void {
+    if (this.fabState === 'closed') {
+      this.fabState = 'open';
+    } else {
+      this.fabState = 'closed';
+    }
+  }
 }
