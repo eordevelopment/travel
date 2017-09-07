@@ -2,30 +2,29 @@ import * as moment from 'moment';
 
 import { Component, OnInit, Input } from '@angular/core';
 import { Flight } from 'app/models/Flight';
+import { BaseItineraryItemComponent } from 'app/classes/BaseItineraryItemComponent';
 
 @Component({
   selector: 'app-itinerary-flight',
   templateUrl: './itinerary-flight.component.html',
   styleUrls: ['./itinerary-flight.component.less']
 })
-export class ItineraryFlightComponent implements OnInit {
+export class ItineraryFlightComponent extends BaseItineraryItemComponent implements OnInit {
   @Input() date: moment.Moment;
   @Input() flight: Flight;
-  constructor() { }
+  constructor() {
+    super();
+   }
 
   ngOnInit() {
   }
 
   public isDepartureDay(): boolean {
-    const flightDate = this.flight.departureTimeMt.format('LL');
-    const date = this.date.format('LL');
-    return flightDate === date;
+    return this.isSameDay(this.date, this.flight.departureTimeMt);
   }
 
   public isArrivalDay(): boolean {
-    const flightDate = this.flight.arrivalTimeMt.format('LL');
-    const date = this.date.format('LL');
-    return flightDate === date;
+    return this.isSameDay(this.date, this.flight.arrivalTimeMt);
   }
 
 }

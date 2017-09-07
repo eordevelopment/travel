@@ -32,6 +32,17 @@ export class ItineraryPublicComponent implements OnInit {
         }
       }
     }
+
+    if (this.trip.hasCarRentals) {
+      for (const rental of this.trip.carRentals) {
+        const startDay = this.getDay(rental.pickupTimeMt);
+        const endDay = this.getDay(rental.dropOffTimeMt);
+        startDay.carRentals.push(rental);
+        if (endDay.date !== startDay.date) {
+          endDay.carRentals.push(rental);
+        }
+      }
+    }
   }
 
   public getDays(startDate: moment.Moment, endDate: moment.Moment): TripDay[] {
@@ -49,7 +60,10 @@ export class ItineraryPublicComponent implements OnInit {
   }
 
   public getDay(dateTime: moment.Moment): TripDay {
-    const date = dateTime.format('LL');
+    const offset = (dateTime as any)._tzm;
+    const localTime = dateTime.clone().utcOffset(offset);
+
+    const date = localTime.format('LL');
     for (const day of this.days) {
       if (day.date === date) {
         return day;

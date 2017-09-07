@@ -17,6 +17,7 @@ import { InfoCardComponent } from 'app/components/info-card/info-card.component'
 import { ItineraryComponent } from 'app/components/itinerary/itinerary.component';
 import { ItineraryPublicComponent } from 'app/components/itinerary-public/itinerary-public.component';
 import { ItineraryFlightComponent } from 'app/components/itinerary-flight/itinerary-flight.component';
+import { ItineraryRentalComponent } from 'app/components/itinerary-rental/itinerary-rental.component';
 
 // Services
 import { StorageService } from './services/storage.service';
@@ -33,7 +34,8 @@ import { TripService } from 'app/services/trip.service';
     InfoCardComponent,
     ItineraryComponent,
     ItineraryPublicComponent,
-    ItineraryFlightComponent
+    ItineraryFlightComponent,
+    ItineraryRentalComponent
   ],
   imports: [
     BrowserModule,

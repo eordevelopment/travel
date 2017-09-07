@@ -25,7 +25,7 @@
 
   <div class="mdl-grid info-row">
     <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
-      {{flight.departureTimeMt.format('HH:mm')}}
+        {{toLocalTime(flight.departureTimeMt)}}
     </div>
     <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
       {{flight.originAirport}}
@@ -57,7 +57,7 @@
 
   <div class="mdl-grid info-row">
     <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
-      {{flight.arrivalTimeMt.format('HH:mm')}}
+      {{toLocalTime(flight.arrivalTimeMt)}}
     </div>
     <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
       {{flight.destinationAirport}}

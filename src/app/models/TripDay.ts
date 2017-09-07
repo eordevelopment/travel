@@ -30,4 +30,11 @@ export class TripDay {
         }
         return false;
     }
+
+    public hasRentals(): boolean {
+        if (this.carRentals.length > 0) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,0 +1,40 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12 text-left">
+    <span class="text-primary"><strong>Car Rental</strong></span>
+  </div>
+</div>
+
+<div *ngIf="isPickupDay()">
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+      Time
+    </div>
+    <div class="mdl-cell mdl-cell--3-col-phone mdl-cell--6-col-tablet mdl-cell--9-col-desktop text-muted">
+      Notes
+    </div>
+  </div>
+
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{toLocalTime(rental.pickupTimeMt)}}
+    </div>
+    <div class="mdl-cell mdl-cell--3-col-phone mdl-cell--6-col-tablet mdl-cell--9-col-desktop">
+      {{rental.note}}
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isDropoffDay()">
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+      Time
+    </div>
+
+  </div>
+
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{toLocalTime(rental.dropOffTimeMt)}}
+    </div>
+  </div>
+</div>
