@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'app/services/auth-guard';
 import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashboard.component';
 import { HomeComponent } from 'app/components/home/home.component';
+import { ItineraryComponent } from 'app/components/itinerary/itinerary.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
-  { path: 'trip/:id',  component: TripDashboardComponent, canActivate: [AuthGuard] }
+  { path: 'trip/:id',  component: TripDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'itinerary',  component: ItineraryComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

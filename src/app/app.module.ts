@@ -14,6 +14,7 @@ import { TravelCardComponent } from 'app/components/travel-card/travel-card.comp
 import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashboard.component';
 import { FabMenuComponent } from 'app/components/fab-menu/fab-menu.component';
 import { InfoCardComponent } from 'app/components/info-card/info-card.component';
+import { ItineraryComponent } from 'app/components/itinerary/itinerary.component';
 
 // Services
 import { StorageService } from './services/storage.service';
@@ -27,7 +28,8 @@ import { TripService } from 'app/services/trip.service';
     TravelCardComponent,
     TripDashboardComponent,
     FabMenuComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    ItineraryComponent
   ],
   imports: [
     BrowserModule,
