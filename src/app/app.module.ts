@@ -1,4 +1,5 @@
 import { MdlModule } from '@angular-mdl/core';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +13,7 @@ import { HomeComponent } from 'app/components/home/home.component';
 import { TravelCardComponent } from 'app/components/travel-card/travel-card.component';
 import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashboard.component';
 import { FabMenuComponent } from 'app/components/fab-menu/fab-menu.component';
+import { DatepickerComponent } from 'app/components/datepicker/datepicker.component';
 
 // Services
 import { StorageService } from './services/storage.service';
@@ -24,7 +26,8 @@ import { TripService } from 'app/services/trip.service';
     HomeComponent,
     TravelCardComponent,
     TripDashboardComponent,
-    FabMenuComponent
+    FabMenuComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { TripService } from 'app/services/trip.service';
     AppRoutingModule,
     HttpModule,
     JsonpModule,
-    MdlModule,
+    MdlModule
   ],
   providers: [
     AuthGuard,
