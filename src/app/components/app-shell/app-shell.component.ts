@@ -32,7 +32,6 @@ export class AppShellComponent implements AfterViewInit {
     this.storage.currentTrip.subscribe(value => {
       setTimeout(() => {
         this.currentTrip = value;
-        console.log(this.currentTrip);
       });
     });
 

@@ -22,9 +22,12 @@
 <ng-template #tripsList>
   <div *ngIf="trips">
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone" *ngFor="let trip of trips">
+        <div class="mdl-cell mdl-cell--4-col" *ngFor="let trip of trips">
+            <app-travel-card [trip]="trip"></app-travel-card>
+        </div>
+      <!-- <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone" *ngFor="let trip of trips">
         <app-travel-card [trip]="trip"></app-travel-card>
-      </div>
+      </div> -->
     </div>
   </div>
 

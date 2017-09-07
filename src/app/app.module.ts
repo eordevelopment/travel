@@ -13,7 +13,7 @@ import { HomeComponent } from 'app/components/home/home.component';
 import { TravelCardComponent } from 'app/components/travel-card/travel-card.component';
 import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashboard.component';
 import { FabMenuComponent } from 'app/components/fab-menu/fab-menu.component';
-import { DatepickerComponent } from 'app/components/datepicker/datepicker.component';
+import { InfoCardComponent } from 'app/components/info-card/info-card.component';
 
 // Services
 import { StorageService } from './services/storage.service';
@@ -27,7 +27,7 @@ import { TripService } from 'app/services/trip.service';
     TravelCardComponent,
     TripDashboardComponent,
     FabMenuComponent,
-    DatepickerComponent
+    InfoCardComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { StorageService } from 'app/services/storage.service';
 import { TripService } from 'app/services/trip.service';
 import { ITrip } from 'app/contracts/ITrip';
 import { FabItem } from 'app/classes/FabItem';
+import { Trip } from 'app/models/Trip';
 
 @Component({
   selector: 'app-trip-dashboard',
@@ -17,7 +18,7 @@ import { FabItem } from 'app/classes/FabItem';
   styleUrls: ['./trip-dashboard.component.less']
 })
 export class TripDashboardComponent extends BaseComponent implements OnInit {
-  public trip: ITrip;
+  public trip: Trip;
   public fabItems: FabItem[];
 
   constructor(
@@ -38,7 +39,7 @@ export class TripDashboardComponent extends BaseComponent implements OnInit {
         }
       })
       .subscribe((source: ITrip) => {
-        this.trip = source;
+        this.trip = new Trip(source);
         this.storage.setTrip(this.trip);
       },
       (error: any) => this.handleError(error));
@@ -52,6 +53,5 @@ export class TripDashboardComponent extends BaseComponent implements OnInit {
   }
 
   public fabItemAction(event: FabItem): void {
-    console.log(event);
   }
 }

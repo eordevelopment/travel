@@ -102,7 +102,6 @@ export class StorageService {
         this.login(new LoginDto(user.googleToken))
           .subscribe(response => {
             user.userToken = response;
-            console.log(user);
             window.localStorage.setItem(this.sessionKey, JSON.stringify(user));
             this.loggedInUser.next(user);
           },

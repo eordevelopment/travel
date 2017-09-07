@@ -1,4 +1,4 @@
-<div *ngIf="trip">
+<!-- <div *ngIf="trip">
   {{trip.name}}
 </div>
 
@@ -16,6 +16,33 @@
 <br>
 <mdl-textfield type="datetime-local" floating-label></mdl-textfield>
 <br>
-<mdl-textfield type="time" floating-label></mdl-textfield>
+<mdl-textfield type="time" floating-label></mdl-textfield> -->
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col" *ngIf="trip.isUpcoming()">
+      <app-info-card 
+      [title]="'Countdown'" 
+      [description]="trip.daysUntilDeparture() + ' days until departure'">
+    </app-info-card>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col" *ngIf="trip.hasFlights()">
+      <app-info-card 
+      [title]="'Flights'" 
+      [description]="trip.flights.length + ' flights totalling ' + trip.totalFlightTime() + ' hours'">
+    </app-info-card>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col" *ngIf="trip.hasHotels()">
+      <app-info-card 
+      [title]="'Hotels'" 
+      [description]="trip.hotels.length + ' hotels totalling '+trip.totalHotelNights()+' nights'">
+    </app-info-card>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col" *ngIf="trip.hasCarRentals()">
+      <app-info-card 
+      [title]="'Car rental'" 
+      [description]="trip.carRentals.length + ' rental(s) totalling ' + trip.totalCarRental() + ' days'">
+    </app-info-card>
+  </div>
+</div>
 
 <app-fab-menu [fabItems]="fabItems" (onItemSelect)="fabItemAction($event)"></app-fab-menu>
