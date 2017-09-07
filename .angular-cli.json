@@ -22,6 +22,7 @@
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/mfb/src/mfb.min.css",
         "styles/mdl-override.less",
+        "styles/mdl-fab-override.less",
         "styles/variables.less",
         "styles/styles.less"
       ],"scripts": [

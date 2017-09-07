@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.fabItems = new Array();
-    this.fabItems.push(new FabItem('New trip', 'flight'));
+    this.fabItems.push(new FabItem('New trip', 'flight_takeoff'));
   }
 
   public login(): void {

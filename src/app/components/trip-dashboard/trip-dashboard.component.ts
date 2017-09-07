@@ -46,7 +46,9 @@ export class TripDashboardComponent extends BaseComponent implements OnInit {
       this.fabItems = new Array();
       this.fabItems.push(new FabItem('Add flight', 'flight'));
       this.fabItems.push(new FabItem('Add hotel', 'hotel'));
+      this.fabItems.push(new FabItem('Add car rental', 'directions_car'));
       this.fabItems.push(new FabItem('Add activity', 'directions_walk'));
+      this.fabItems.push(new FabItem('Add note', 'edit'));
   }
 
   public fabItemAction(event: FabItem): void {

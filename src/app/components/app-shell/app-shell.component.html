@@ -19,7 +19,6 @@
     <mdl-layout-spacer></mdl-layout-spacer>
     <div *ngIf="hasTrip() && hasUser()" class="mdl-layout--large-screen-only">
         <nav class="mdl-navigation">
-            <span>{{currentTrip.name}}</span>
             <ng-container *ngTemplateOutlet="menuItems"></ng-container>
         </nav>
     </div>
@@ -43,8 +42,7 @@
         </nav>
     </div>
     <hr *ngIf="hasUser()">
-    <div *ngIf="hasTrip() && hasUser()">
-        <h4>{{currentTrip.name}}</h4>
+    <div *ngIf="hasTrip() && hasUser()" class="side-menu">
         <nav class="mdl-navigation">
             <ng-container *ngTemplateOutlet="menuItems"></ng-container>
         </nav>
@@ -52,6 +50,7 @@
 </ng-template>
 
 <ng-template #menuItems>
+    <a routerLink="/trip/{{currentTrip.id}}" class="mdl-navigation__link trip-title">{{currentTrip.name}}</a>
     <a class="mdl-navigation__link"><i class="material-icons">schedule</i> Itinerary</a>
     <a class="mdl-navigation__link"><i class="material-icons">map</i> Map</a>
     <a class="mdl-navigation__link"><i class="material-icons">lightbulb_outline</i> Ideas</a>
