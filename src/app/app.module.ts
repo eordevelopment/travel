@@ -15,6 +15,8 @@ import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashb
 import { FabMenuComponent } from 'app/components/fab-menu/fab-menu.component';
 import { InfoCardComponent } from 'app/components/info-card/info-card.component';
 import { ItineraryComponent } from 'app/components/itinerary/itinerary.component';
+import { ItineraryPublicComponent } from 'app/components/itinerary-public/itinerary-public.component';
+import { ItineraryFlightComponent } from 'app/components/itinerary-flight/itinerary-flight.component';
 
 // Services
 import { StorageService } from './services/storage.service';
@@ -29,7 +31,9 @@ import { TripService } from 'app/services/trip.service';
     TripDashboardComponent,
     FabMenuComponent,
     InfoCardComponent,
-    ItineraryComponent
+    ItineraryComponent,
+    ItineraryPublicComponent,
+    ItineraryFlightComponent
   ],
   imports: [
     BrowserModule,

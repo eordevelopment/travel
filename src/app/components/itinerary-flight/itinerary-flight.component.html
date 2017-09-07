@@ -1,0 +1,72 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--3-col-tablet mdl-cell--4-col-desktop text-left">
+    <span class="text-primary"><strong>Flight</strong></span>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col-phone mdl-cell--5-col-tablet mdl-cell--8-col-desktop text-right text-info">
+    {{flight.name}}
+  </div>
+</div>
+
+<div *ngIf="isDepartureDay()">
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+      Depart
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+      Airport
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+      Flight #
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+      Notes
+    </div>
+  </div>
+
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.departureTimeMt.format('HH:mm')}}
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.originAirport}}
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.flightNumber}}
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.note}}
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isArrivalDay()">
+    <div class="mdl-grid info-row">
+        <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+          Arrive
+        </div>
+        <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+          
+        </div>
+        <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+          
+        </div>
+        <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop text-muted">
+          Duration
+        </div>
+      </div>
+
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.arrivalTimeMt.format('HH:mm')}}
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.destinationAirport}}
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+
+    </div>
+    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+      {{flight.getDurationFormat()}}
+    </div>
+  </div>
+</div>

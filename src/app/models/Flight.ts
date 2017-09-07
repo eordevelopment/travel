@@ -32,4 +32,12 @@ export class Flight implements IFlight {
   public getDuration(): number {
     return this.arrivalTimeMt.diff(this.departureTimeMt);
   }
+
+  public getDurationFormat(): string {
+    const d = moment.duration(this.getDuration(), 'milliseconds');
+    const hours: number = Math.floor(d.asHours());
+    const mins: number = Math.floor(d.asMinutes()) - hours * 60;
+
+    return `${hours}h ${mins}m`;
+  }
 }

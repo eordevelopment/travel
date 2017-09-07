@@ -1,0 +1,12 @@
+<div *ngFor="let day of days">
+    <div class="day-card mdl-card">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text mdl-color-text--teal">{{day.dateMt.format('ddd Do MMM, YYYY')}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <div *ngIf="day.hasFlights()">
+            <app-itinerary-flight *ngFor="let flight of day.flights" [date]="day.dateMt" [flight]="flight"></app-itinerary-flight>
+          </div>
+        </div>
+      </div>
+</div>
