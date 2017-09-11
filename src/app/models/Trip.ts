@@ -83,6 +83,13 @@ export class Trip implements ITrip {
         return false;
     }
 
+    public hasActivities(): boolean {
+        if (this.activities && this.activities != null && this.activities.length > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public isUpcoming(): boolean {
         const now = moment();
         if (now.isBefore(this.fromMt)) {

@@ -7,7 +7,7 @@ export class Hotel implements IHotel {
     public name: string;
     public description: string;
     public checkinTime: string;
-    public Location: Coord;
+    public location: Coord;
     public note: string;
     public links: Link[];
     public numNights: number;
@@ -21,7 +21,7 @@ export class Hotel implements IHotel {
             this.name = source.name;
             this.description = source.description;
             this.checkinTime = source.checkinTime;
-            this.Location = source.Location;
+            this.location = source.location;
             this.note = source.note;
             this.links = source.links;
             this.numNights = source.numNights;

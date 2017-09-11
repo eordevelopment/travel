@@ -1,40 +1,36 @@
 import * as moment from 'moment';
-
-import { CarRental } from 'app/models/CarRental';
-import { Hotel } from 'app/models/Hotel';
-import { Activity } from 'app/models/Activity';
-import { Flight } from 'app/models/Flight';
+import { TripDayItem } from 'app/models/TripDayItem';
 
 export class TripDay {
     public date: string;
     public dateMt: moment.Moment;
-
-    public flights: Flight[];
-    public carRentals: CarRental[];
-    public hotels: Hotel[];
-    public activities: Activity[];
+    public items: TripDayItem[];
 
     constructor(date: moment.Moment) {
         this.dateMt = date;
         this.date = date.format('LL');
 
-        this.flights = new Array();
-        this.carRentals = new Array();
-        this.hotels = new Array();
-        this.activities = new Array();
+        this.items = new Array();
     }
 
-    public hasFlights(): boolean {
-        if (this.flights.length > 0) {
+    public hasItems(): boolean {
+        if (this.items && this.items != null && this.items.length > 0) {
             return true;
         }
         return false;
     }
 
-    public hasRentals(): boolean {
-        if (this.carRentals.length > 0) {
-            return true;
+    public organiseItems(): void {
+        this.items.sort(this.sortAsc);
+    }
+
+    private sortAsc(a: TripDayItem, b: TripDayItem): number {
+        if (a.dateMt.valueOf() < b.dateMt.valueOf()) {
+            return -1;
         }
-        return false;
+        if (a.dateMt.valueOf() > b.dateMt.valueOf()) {
+            return 1;
+        }
+        return 0;
     }
 }

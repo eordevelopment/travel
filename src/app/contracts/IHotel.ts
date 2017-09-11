@@ -5,7 +5,7 @@ export interface IHotel {
     name: string;
     description: string;
     checkinTime: string;
-    Location: Coord;
+    location: Coord;
     note: string;
     links: Link[];
     numNights: number;

@@ -23,6 +23,8 @@ import { ItineraryRentalComponent } from 'app/components/itinerary-rental/itiner
 import { StorageService } from './services/storage.service';
 import { FormHelperService } from './services/form-helper.service'
 import { TripService } from 'app/services/trip.service';
+import { ItineraryHotelComponent } from 'app/components/itinerary-hotel/itinerary-hotel.component';
+import { ItineraryActivityComponent } from 'app/components/itinerary-activity/itinerary-activity.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TripService } from 'app/services/trip.service';
     ItineraryComponent,
     ItineraryPublicComponent,
     ItineraryFlightComponent,
-    ItineraryRentalComponent
+    ItineraryRentalComponent,
+    ItineraryHotelComponent,
+    ItineraryActivityComponent
   ],
   imports: [
     BrowserModule,

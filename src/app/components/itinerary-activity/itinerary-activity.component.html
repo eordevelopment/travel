@@ -1,0 +1,53 @@
+<div class="mdl-grid title-row">
+  <div class="mdl-cell mdl-cell--12-col text-left">
+    <span class="text-primary"><strong>{{activity.name}}</strong></span>
+  </div>
+</div>
+<div class="mdl-grid info-row">
+  <div class="mdl-cell mdl-cell--12-col text-left">
+    <span class="text-muted">{{activity.description}}</span>
+  </div>
+</div>
+
+<!-- <div *ngIf="activity.hasStartTime() || activity.hasEndTime()">
+  <br>
+  <div class="mdl-grid info-row">
+    <div *ngIf="activity.hasStartTime()" class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop text-muted">
+      Start Time
+    </div>
+    <div *ngIf="activity.hasEndTime()" class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop text-muted">
+      End Time
+    </div>
+  </div>
+  <div class="mdl-grid info-row">
+    <div *ngIf="activity.hasStartTime()" class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+      {{toLocalTime(activity.startTimeMt)}}
+    </div>
+    <div *ngIf="activity.hasEndTime()" class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+      {{toLocalTime(activity.endTimeMt)}}
+    </div>
+  </div>
+</div> -->
+
+<div *ngIf="activity.links && activity.links != null && activity.links.length > 0">
+  <br>
+  <div class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--12-col text-muted">
+      Links
+    </div>
+  </div>
+
+  <div *ngFor="let link of activity.links" class="mdl-grid info-row">
+    <div class="mdl-cell mdl-cell--12-col text-left">
+      <a href="{{link.url}}" target="_blank">
+          <span *ngIf="link.name; then linkName else linkUrl"></span>
+        </a>
+    </div>
+    <ng-template #linkName>
+      <span>{{link.name}}</span>
+    </ng-template>
+    <ng-template #linkUrl>
+      <span>{{link.url}}</span>
+    </ng-template>
+  </div>
+</div>

@@ -1,15 +1,32 @@
-<div *ngFor="let day of days">
-    <div class="day-card mdl-card">
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text mdl-color-text--teal">{{day.dateMt.format('ddd Do MMM, YYYY')}}</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          <div *ngIf="day.hasFlights()">
-            <app-itinerary-flight *ngFor="let flight of day.flights" [date]="day.dateMt" [flight]="flight"></app-itinerary-flight>
-          </div>
-          <div *ngIf="day.hasRentals()">
-              <app-itinerary-rental *ngFor="let rental of day.carRentals" [date]="day.dateMt" [rental]="rental"></app-itinerary-rental>
+<div *ngFor="let day of itinerary.days">
+  <div class="day-card mdl-card">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text mdl-color-text--teal">{{day.dateMt.format('ddd Do MMM, YYYY')}}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <div *ngIf="day.hasItems(); then itemsList else noItems"></div>
+      <ng-template #noItems>
+        <div class="text-muted">Nothing planned</div>
+      </ng-template>
+      <ng-template #itemsList>
+        <div *ngIf="day.items.length > 0">
+          <div *ngFor="let item of day.items; let idx = index">
+            <div *ngIf="item.isFlight()">
+              <app-itinerary-flight [date]="day.dateMt" [flight]="item.item"></app-itinerary-flight>
             </div>
+            <div *ngIf="item.isRental()">
+              <app-itinerary-rental [date]="day.dateMt" [rental]="item.item"></app-itinerary-rental>
+            </div>
+            <div *ngIf="item.isHotel()">
+              <app-itinerary-hotel [date]="day.dateMt" [hotel]="item.item"></app-itinerary-hotel>
+            </div>
+            <div *ngIf="item.isActivity()">
+              <app-itinerary-activity [date]="day.dateMt" [activity]="item.item"></app-itinerary-activity>
+            </div>
+            <hr *ngIf="idx < day.items.length -1"/>
+          </div>
         </div>
-      </div>
+      </ng-template>
+    </div>
+  </div>
 </div>

@@ -27,7 +27,25 @@ export class Activity implements IActivity {
             this.endTime = source.endTime;
 
             this.startTimeMt = moment(source.startTime);
-            this.endTimeMt = moment(source.endTime);
+            if (source.endTime) {
+                this.endTimeMt = moment(source.endTime);
+            }
         }
+    }
+
+    public hasStartTime(): boolean {
+        if(this.startTime && this.startTime != null) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public hasEndTime(): boolean {
+        if(this.endTime && this.endTime != null) {
+            return true;
+        }
+
+        return false;
     }
 }
