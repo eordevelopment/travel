@@ -9,7 +9,6 @@ import { BaseComponent } from 'app/classes/BaseComponent';
 import { StorageService } from 'app/services/storage.service';
 import { TripService } from 'app/services/trip.service';
 import { ITrip } from 'app/contracts/ITrip';
-import { FabItem } from 'app/classes/FabItem';
 import { Trip } from 'app/models/Trip';
 
 @Component({
@@ -19,7 +18,6 @@ import { Trip } from 'app/models/Trip';
 })
 export class TripDashboardComponent extends BaseComponent implements OnInit {
   public trip: Trip;
-  public fabItems: FabItem[];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,15 +41,20 @@ export class TripDashboardComponent extends BaseComponent implements OnInit {
         this.storage.setTrip(this.trip);
       },
       (error: any) => this.handleError(error));
-
-      this.fabItems = new Array();
-      this.fabItems.push(new FabItem('Add flight', 'flight'));
-      this.fabItems.push(new FabItem('Add hotel', 'hotel'));
-      this.fabItems.push(new FabItem('Add car rental', 'directions_car'));
-      this.fabItems.push(new FabItem('Add activity', 'directions_walk'));
-      this.fabItems.push(new FabItem('Add note', 'edit'));
   }
 
-  public fabItemAction(event: FabItem): void {
+  public navItinerary(): void {
+    this.router.navigate(['/itinerary']);
+  }
+
+  public navMap(): void {
+    this.router.navigate(['/map']);
+  }
+  public navIdeas(): void {
+    this.router.navigate(['/ideas']);
+  }
+
+  public navPrice(): void {
+    this.router.navigate(['/price']);
   }
 }

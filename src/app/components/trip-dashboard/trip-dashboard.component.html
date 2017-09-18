@@ -1,24 +1,57 @@
-<!-- <div *ngIf="trip">
-  {{trip.name}}
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="action-card mdl-card mdl-shadow--4dp" (click)="navItinerary()">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text mdl-color-text--teal">Manage Itinerary</h2>
+      </div>
+      <div class="mdl-card__supporting-text text-center">
+        <div>
+          <i class="material-icons">schedule</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="action-card mdl-card mdl-shadow--4dp" (click)="navMap()">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text mdl-color-text--teal">View Map</h2>
+      </div>
+      <div class="mdl-card__supporting-text text-center">
+        <div>
+          <i class="material-icons">map</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="action-card mdl-card mdl-shadow--4dp" (click)="navIdeas()">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text mdl-color-text--teal">Save Ideas</h2>
+      </div>
+      <div class="mdl-card__supporting-text text-center">
+        <div>
+          <i class="material-icons">lightbulb_outline</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="action-card mdl-card mdl-shadow--4dp" (click)="navPrice()">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text mdl-color-text--teal">Pricing</h2>
+      </div>
+      <div class="mdl-card__supporting-text text-center">
+        <div>
+          <i class="material-icons">euro_symbol</i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<mdl-textfield type="text" label="Text..." floating-label></mdl-textfield>
-<mdl-textfield
-        type="text"
-        label="Number..."
-        pattern="-?[0-9]*(\.[0-9]+)?"
-        error-msg="Input is not a number!"
-        
-        floating-label ></mdl-textfield>
-
-<br>
-<mdl-textfield type="date" floating-label></mdl-textfield>
-<br>
-<mdl-textfield type="datetime-local" floating-label></mdl-textfield>
-<br>
-<mdl-textfield type="time" floating-label></mdl-textfield> -->
-
-<div class="mdl-grid">
+<!-- <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--4-col" *ngIf="trip.isUpcoming()">
       <app-info-card 
       [title]="'Countdown'" 
@@ -43,6 +76,4 @@
       [description]="trip.carRentals.length + ' rental(s) totalling ' + trip.totalCarRental() + ' days'">
     </app-info-card>
   </div>
-</div>
-
-<app-fab-menu [fabItems]="fabItems" (onItemSelect)="fabItemAction($event)"></app-fab-menu>
+</div> -->

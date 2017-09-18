@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/map-icons/dist/css/map-icons.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/mfb/src/mfb.min.css",
         "styles/mdl-override.less",
@@ -26,6 +27,7 @@
         "styles/variables.less",
         "styles/styles.less"
       ],"scripts": [
+        "../node_modules/map-icons/dist/js/map-icons.min.js",
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/mfb/src/mfb.min.js"
       ],

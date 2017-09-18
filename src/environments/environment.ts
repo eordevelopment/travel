@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://localhost:57237/api/'
+  serviceUrl: 'http://localhost:57237/api/',
+  mapsTimezoneKey: 'AIzaSyAMR0FK6cNS4U9E38W1mu1zNG9BXyw0SWw'
 };

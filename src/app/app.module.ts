@@ -12,19 +12,17 @@ import { AppShellComponent } from 'app/components/app-shell/app-shell.component'
 import { HomeComponent } from 'app/components/home/home.component';
 import { TravelCardComponent } from 'app/components/travel-card/travel-card.component';
 import { TripDashboardComponent } from 'app/components/trip-dashboard/trip-dashboard.component';
-import { FabMenuComponent } from 'app/components/fab-menu/fab-menu.component';
-import { InfoCardComponent } from 'app/components/info-card/info-card.component';
-import { ItineraryComponent } from 'app/components/itinerary/itinerary.component';
-import { ItineraryPublicComponent } from 'app/components/itinerary-public/itinerary-public.component';
-import { ItineraryFlightComponent } from 'app/components/itinerary-flight/itinerary-flight.component';
-import { ItineraryRentalComponent } from 'app/components/itinerary-rental/itinerary-rental.component';
 
 // Services
 import { StorageService } from './services/storage.service';
 import { FormHelperService } from './services/form-helper.service'
 import { TripService } from 'app/services/trip.service';
-import { ItineraryHotelComponent } from 'app/components/itinerary-hotel/itinerary-hotel.component';
-import { ItineraryActivityComponent } from 'app/components/itinerary-activity/itinerary-activity.component';
+
+import { ItineraryModule } from 'app/modules/itinerary/itinerary.module';
+import { MapModule } from 'app/modules/map/map.module';
+import { IdeasModule } from 'app/modules/ideas/ideas.module';
+import { PriceModule } from 'app/modules/price/price.module';
+import { ControlsModule } from 'app/modules/controls/controls.module';
 
 @NgModule({
   declarations: [
@@ -32,14 +30,6 @@ import { ItineraryActivityComponent } from 'app/components/itinerary-activity/it
     HomeComponent,
     TravelCardComponent,
     TripDashboardComponent,
-    FabMenuComponent,
-    InfoCardComponent,
-    ItineraryComponent,
-    ItineraryPublicComponent,
-    ItineraryFlightComponent,
-    ItineraryRentalComponent,
-    ItineraryHotelComponent,
-    ItineraryActivityComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +38,12 @@ import { ItineraryActivityComponent } from 'app/components/itinerary-activity/it
     AppRoutingModule,
     HttpModule,
     JsonpModule,
-    MdlModule
+    MdlModule,
+    ItineraryModule,
+    MapModule,
+    IdeasModule,
+    PriceModule,
+    ControlsModule
   ],
   providers: [
     AuthGuard,
